@@ -19,8 +19,8 @@ namespace restaurante_catracho_apirest.Controllers
         [HttpGet]
         public async Task<IActionResult> Lista()
         {
-           List<Usuarios> Lista = await _data.Lista();
-            return StatusCode(StatusCodes.Status200OK,Lista);
+            List<Usuarios> Lista = await _data.Lista();
+            return StatusCode(StatusCodes.Status200OK, Lista);
         }
 
         [HttpGet("/{id_usuario}")]
@@ -33,16 +33,33 @@ namespace restaurante_catracho_apirest.Controllers
         [HttpPost]
         public async Task<IActionResult> Crear([FromBody] Usuarios objeto)
         {
-            bool respuesta = await _data.Crear(objeto);
-            return StatusCode(StatusCodes.Status200OK, new {isSuccess = respuesta});
+            try
+            {
+                bool respuesta = await _data.Crear(objeto);
+                return StatusCode(respuesta ? StatusCodes.Status201Created : StatusCodes.Status409Conflict, new { isSuccess = respuesta });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { isSuccess = false, message = ex.Message });
+            }
         }
 
         [HttpPut]
         public async Task<IActionResult> Editar([FromBody] Usuarios objeto)
         {
-            bool respuesta = await _data.Editar(objeto);
-            return StatusCode(StatusCodes.Status200OK, new { isSuccess = respuesta });
+            try
+            {
+                bool respuesta = await _data.Editar(objeto);
+                return respuesta
+                    ? Ok(new { isSuccess = true })
+                    : NotFound(new { isSuccess = false, message = "Usuario no encontrado" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { isSuccess = false, message = ex.Message });
+            }
         }
+
 
         [HttpDelete("/{id_usuario}")]
         public async Task<IActionResult> Elimiar(int id_usuario)

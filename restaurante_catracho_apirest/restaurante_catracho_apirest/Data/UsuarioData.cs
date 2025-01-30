@@ -33,7 +33,7 @@ namespace restaurante_catracho_apirest.Data
                             id_usuario = Convert.ToInt32(reader["id_usuario"])!,
                             nombre = reader["nombre"].ToString()!,
                             correo = reader["correo"].ToString()!,
-                            contraseña = reader["contraseña"].ToString()!,
+                            clave = reader["clave"].ToString()!,
                             rol = reader["rol"].ToString()!,
                             telefono = reader["telefono"].ToString()!,
                             direccion = reader["direccion"].ToString()!
@@ -52,7 +52,7 @@ namespace restaurante_catracho_apirest.Data
             {
                 await con.OpenAsync();
                 SqlCommand cmd = new SqlCommand("sp_GetUsuarioById", con);
-                cmd.Parameters.AddWithValue("@id_empleado", id_usuario);
+                cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 using (var reader = await cmd.ExecuteReaderAsync())
@@ -64,7 +64,7 @@ namespace restaurante_catracho_apirest.Data
                             id_usuario = Convert.ToInt32(reader["id_usuario"]),
                             nombre = reader["nombre"].ToString(),
                             correo = reader["correo"].ToString(),
-                            contraseña = reader["contraseña"].ToString(),
+                            clave = reader["clave"].ToString(),
                             rol = reader["rol"].ToString(),
                             telefono = reader["telefono"].ToString(),
                             direccion = reader["direccion"].ToString()
@@ -81,11 +81,10 @@ namespace restaurante_catracho_apirest.Data
 
             using (var con = new SqlConnection(conexion))
             {
-                await con.OpenAsync();
                 SqlCommand cmd = new SqlCommand("sp_InsertUsuario", con);
                 cmd.Parameters.AddWithValue("@nombre", objeto.nombre);
                 cmd.Parameters.AddWithValue("@correo", objeto.correo);
-                cmd.Parameters.AddWithValue("@contraseña", objeto.contraseña);
+                cmd.Parameters.AddWithValue("@clave", objeto.clave);
                 cmd.Parameters.AddWithValue("@rol", objeto.rol);
                 cmd.Parameters.AddWithValue("@telefono", objeto.telefono);
                 cmd.Parameters.AddWithValue("@direccion", objeto.direccion);
@@ -94,10 +93,17 @@ namespace restaurante_catracho_apirest.Data
                 try
                 {
                     await con.OpenAsync();
-                    respuesta = await cmd.ExecuteNonQueryAsync() > 0 ? true : false;
+                    int filasAfectadas = await cmd.ExecuteNonQueryAsync();
+                    respuesta = filasAfectadas > 0;
                 }
-                catch (Exception)
+                catch (SqlException sqlx)
                 {
+                    Console.WriteLine($"Error en Editar (SQL): {sqlx.Number} - {sqlx.Message}");
+                    respuesta = false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error en Editar (General): {ex.Message}");
                     respuesta = false;
                 }
             }
@@ -110,12 +116,11 @@ namespace restaurante_catracho_apirest.Data
 
             using (var con = new SqlConnection(conexion))
             {
-                await con.OpenAsync();
                 SqlCommand cmd = new SqlCommand("sp_UpdateUsuario", con);
-                cmd.Parameters.AddWithValue("@id_usuario", objeto.id_usuario);
+                cmd.Parameters.AddWithValue("@id_usuario", Convert.ToInt32(objeto.id_usuario));
                 cmd.Parameters.AddWithValue("@nombre", objeto.nombre);
                 cmd.Parameters.AddWithValue("@correo", objeto.correo);
-                cmd.Parameters.AddWithValue("@contraseña", objeto.contraseña);
+                cmd.Parameters.AddWithValue("@clave", objeto.clave);
                 cmd.Parameters.AddWithValue("@rol", objeto.rol);
                 cmd.Parameters.AddWithValue("@telefono", objeto.telefono);
                 cmd.Parameters.AddWithValue("@direccion", objeto.direccion);
@@ -124,10 +129,17 @@ namespace restaurante_catracho_apirest.Data
                 try
                 {
                     await con.OpenAsync();
-                    respuesta = await cmd.ExecuteNonQueryAsync() > 0 ? true : false;
+                    int filasAfectadas = await cmd.ExecuteNonQueryAsync();
+                    respuesta = filasAfectadas > 0;
                 }
-                catch (Exception)
+                catch (SqlException sqlx)
                 {
+                    Console.WriteLine($"Error en Editar (SQL): {sqlx.Number} - {sqlx.Message}");
+                    respuesta = false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error en Editar (General): {ex.Message}");
                     respuesta = false;
                 }
             }
@@ -136,11 +148,10 @@ namespace restaurante_catracho_apirest.Data
 
         public async Task<bool> Eliminar(int id_usuario)
         {
-            bool respuesta = true;
+            bool respuesta = false;
 
             using (var con = new SqlConnection(conexion))
             {
-                await con.OpenAsync();
                 SqlCommand cmd = new SqlCommand("sp_DeleteUsuario", con);
                 cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -148,10 +159,13 @@ namespace restaurante_catracho_apirest.Data
                 try
                 {
                     await con.OpenAsync();
-                    respuesta = await cmd.ExecuteNonQueryAsync() > 0 ? true : false;
+                    int filasAfectadas = await cmd.ExecuteNonQueryAsync();
+
+                    respuesta = filasAfectadas > 0;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Console.WriteLine($"Error en Eliminar: {ex.Message}");
                     respuesta = false;
                 }
             }

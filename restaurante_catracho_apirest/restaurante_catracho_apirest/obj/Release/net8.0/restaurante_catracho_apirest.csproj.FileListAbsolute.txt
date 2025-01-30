@@ -40,3 +40,4 @@ C:\Users\PC\Desktop\DanielBackup\JesusProyecto\restaurante_catracho_apirest\rest
 C:\Users\PC\Desktop\DanielBackup\JesusProyecto\restaurante_catracho_apirest\restaurante_catracho_apirest\obj\Release\net8.0\restaurante_catracho_apirest.pdb
 C:\Users\PC\Desktop\DanielBackup\JesusProyecto\restaurante_catracho_apirest\restaurante_catracho_apirest\obj\Release\net8.0\restaurante_catracho_apirest.genruntimeconfig.cache
 C:\Users\PC\Desktop\DanielBackup\JesusProyecto\restaurante_catracho_apirest\restaurante_catracho_apirest\obj\Release\net8.0\ref\restaurante_catracho_apirest.dll
+C:\Users\PC\Desktop\DanielBackup\JesusProyecto\restaurante_catracho_apirest\restaurante_catracho_apirest\obj\Release\net8.0\restaurante_catracho_apirest.sourcelink.json

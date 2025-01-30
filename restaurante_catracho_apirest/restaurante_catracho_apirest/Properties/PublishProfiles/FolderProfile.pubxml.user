@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\PC\Desktop\DanielBackup\JesusProyecto\apiRestBuildRestauranteCatracho</_PublishTargetUrl>
+    <History>True|2025-01-30T03:16:02.0718063Z||;True|2025-01-29T21:14:14.8972801-06:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="CadenaSQL">
+      <Value>workstation id=restaurante_catracho_db.mssql.somee.com%3bpacket size=4096%3buser id=yeezuspm_SQLLogin_1%3bpwd=gev2vf7fn4%3bdata source=restaurante_catracho_db.mssql.somee.com%3bpersist security info=False%3binitial catalog=restaurante_catracho_db%3bTrustServerCertificate=True</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

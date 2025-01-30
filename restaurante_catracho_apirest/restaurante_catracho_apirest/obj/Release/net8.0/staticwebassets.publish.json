@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "hgzmphxdlW+oDuyJHiLCXNNcRPWyNYN0Q++uMvkpPdw=",
+  "Source": "restaurante_catracho_apirest",
+  "BasePath": "_content/restaurante_catracho_apirest",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

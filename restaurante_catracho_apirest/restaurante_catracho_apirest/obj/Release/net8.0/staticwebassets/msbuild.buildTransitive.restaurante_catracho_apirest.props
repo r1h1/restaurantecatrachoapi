@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\restaurante_catracho_apirest.props" />
+</Project>

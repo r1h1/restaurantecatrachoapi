@@ -1,0 +1,6 @@
+@restaurante_catracho_apirest_HostAddress = http://localhost:5139
+
+GET {{restaurante_catracho_apirest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

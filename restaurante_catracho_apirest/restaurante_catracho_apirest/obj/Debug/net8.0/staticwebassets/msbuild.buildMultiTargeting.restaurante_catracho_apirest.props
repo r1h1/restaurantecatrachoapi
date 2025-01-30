@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\restaurante_catracho_apirest.props" />
+</Project>

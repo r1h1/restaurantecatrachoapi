@@ -10,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<UsuarioData>();
+builder.Services.AddSingleton<PedidosData>();
 
 var app = builder.Build();
 

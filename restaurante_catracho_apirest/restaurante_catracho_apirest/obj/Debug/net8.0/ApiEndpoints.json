@@ -1,14 +1,56 @@
 [
   {
-    "ContainingType": "restaurante_catracho_apirest.Controllers.UsuariosController",
+    "ContainingType": "restaurante_catracho_apirest.Controllers.PedidosController",
+    "Method": "Lista",
+    "RelativePath": "api/Pedidos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "restaurante_catracho_apirest.Controllers.PedidosController",
+    "Method": "Crear",
+    "RelativePath": "api/Pedidos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedido",
+        "Type": "restaurante_catracho_apirest.Models.Pedidos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "restaurante_catracho_apirest.Controllers.PedidosController",
+    "Method": "Editar",
+    "RelativePath": "api/Pedidos",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pedido",
+        "Type": "restaurante_catracho_apirest.Models.Pedidos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "restaurante_catracho_apirest.Controllers.PedidosController",
     "Method": "Obtener",
-    "RelativePath": "{id_usuario}",
+    "RelativePath": "api/Pedidos/{id_pedido}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id_usuario",
+        "Name": "id_pedido",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -16,15 +58,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "restaurante_catracho_apirest.Controllers.UsuariosController",
-    "Method": "Elimiar",
-    "RelativePath": "{id_usuario}",
+    "ContainingType": "restaurante_catracho_apirest.Controllers.PedidosController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Pedidos/{id_pedido}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id_usuario",
+        "Name": "id_pedido",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -50,7 +92,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "objeto",
+        "Name": "usuario",
         "Type": "restaurante_catracho_apirest.Models.Usuarios",
         "IsRequired": true
       }
@@ -66,8 +108,40 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "objeto",
+        "Name": "usuario",
         "Type": "restaurante_catracho_apirest.Models.Usuarios",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "restaurante_catracho_apirest.Controllers.UsuariosController",
+    "Method": "Obtener",
+    "RelativePath": "api/Usuarios/{id_usuario}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_usuario",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "restaurante_catracho_apirest.Controllers.UsuariosController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Usuarios/{id_usuario}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_usuario",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

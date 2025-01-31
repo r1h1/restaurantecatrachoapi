@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using restaurante_catracho_apirest.Data;
 using restaurante_catracho_apirest.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace restaurante_catracho_apirest.Controllers
 {
@@ -16,27 +18,41 @@ namespace restaurante_catracho_apirest.Controllers
             _data = data;
         }
 
+        // GET: api/Usuarios - Obtener todos los usuarios
         [HttpGet]
         public async Task<IActionResult> Lista()
         {
-            List<Usuarios> Lista = await _data.Lista();
-            return StatusCode(StatusCodes.Status200OK, Lista);
+            var lista = await _data.Lista();
+            return Ok(lista);
         }
 
-        [HttpGet("/{id_usuario}")]
+        // GET: api/Usuarios/{id_usuario} - Obtener un usuario por ID
+        [HttpGet("{id_usuario}")]
         public async Task<IActionResult> Obtener(int id_usuario)
         {
-            Usuarios objeto = await _data.ObtenerId(id_usuario);
-            return StatusCode(StatusCodes.Status200OK, objeto);
+            var usuario = await _data.ObtenerId(id_usuario);
+            if (usuario == null)
+            {
+                return NotFound(new { isSuccess = false, message = "Usuario no encontrado" });
+            }
+            return Ok(usuario);
         }
 
+        // POST: api/Usuarios - Crear un usuario
         [HttpPost]
-        public async Task<IActionResult> Crear([FromBody] Usuarios objeto)
+        public async Task<IActionResult> Crear([FromBody] Usuarios usuario)
         {
+            if (usuario == null)
+            {
+                return BadRequest(new { isSuccess = false, message = "Datos inválidos" });
+            }
+
             try
             {
-                bool respuesta = await _data.Crear(objeto);
-                return StatusCode(respuesta ? StatusCodes.Status201Created : StatusCodes.Status409Conflict, new { isSuccess = respuesta });
+                bool respuesta = await _data.Crear(usuario);
+                return respuesta
+                    ? StatusCode(StatusCodes.Status201Created, new { isSuccess = true, message = "Usuario creado exitosamente" })
+                    : StatusCode(StatusCodes.Status409Conflict, new { isSuccess = false, message = "No se pudo crear el usuario" });
             }
             catch (Exception ex)
             {
@@ -44,14 +60,20 @@ namespace restaurante_catracho_apirest.Controllers
             }
         }
 
+        // PUT: api/Usuarios - Editar un usuario
         [HttpPut]
-        public async Task<IActionResult> Editar([FromBody] Usuarios objeto)
+        public async Task<IActionResult> Editar([FromBody] Usuarios usuario)
         {
+            if (usuario == null || usuario.id_usuario == 0)
+            {
+                return BadRequest(new { isSuccess = false, message = "Datos inválidos" });
+            }
+
             try
             {
-                bool respuesta = await _data.Editar(objeto);
+                bool respuesta = await _data.Editar(usuario);
                 return respuesta
-                    ? Ok(new { isSuccess = true })
+                    ? Ok(new { isSuccess = true, message = "Usuario actualizado correctamente" })
                     : NotFound(new { isSuccess = false, message = "Usuario no encontrado" });
             }
             catch (Exception ex)
@@ -60,12 +82,21 @@ namespace restaurante_catracho_apirest.Controllers
             }
         }
 
-
-        [HttpDelete("/{id_usuario}")]
-        public async Task<IActionResult> Elimiar(int id_usuario)
+        // DELETE: api/Usuarios/{id_usuario} - Eliminar un usuario
+        [HttpDelete("{id_usuario}")]
+        public async Task<IActionResult> Eliminar(int id_usuario)
         {
-            bool respuesta = await _data.Eliminar(id_usuario);
-            return StatusCode(StatusCodes.Status200OK, new { isSuccess = respuesta });
+            try
+            {
+                bool respuesta = await _data.Eliminar(id_usuario);
+                return respuesta
+                    ? Ok(new { isSuccess = true, message = "Usuario eliminado correctamente" })
+                    : NotFound(new { isSuccess = false, message = "Usuario no encontrado" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { isSuccess = false, message = ex.Message });
+            }
         }
     }
 }

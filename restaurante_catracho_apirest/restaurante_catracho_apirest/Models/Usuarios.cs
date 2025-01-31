@@ -10,4 +10,10 @@
         public string telefono { get; set; }
         public string direccion { get; set; }
     }
+
+    public class ActualizarClaveRequest
+    {
+        public int IdUsuario { get; set; }
+        public string NuevaClave { get; set; }
+    }
 }

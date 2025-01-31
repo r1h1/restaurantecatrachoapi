@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using restaurante_catracho_apirest.Data;
 using restaurante_catracho_apirest.Models;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace restaurante_catracho_apirest.Controllers
@@ -60,6 +62,28 @@ namespace restaurante_catracho_apirest.Controllers
             }
         }
 
+        // POST: api/Usuarios - Modificar clave de usuario
+        [HttpPost("ActualizarClave")]
+        public async Task<IActionResult> ActualizarClave([FromBody] ActualizarClaveRequest request)
+        {
+            if (request == null || request.IdUsuario <= 0 || string.IsNullOrEmpty(request.NuevaClave))
+            {
+                return BadRequest(new { mensaje = "Datos inválidos." });
+            }
+
+            bool resultado = await _data.ActualizarClave(request.IdUsuario, request.NuevaClave);
+
+            if (resultado)
+            {
+                return Ok(new { mensaje = "Contraseña actualizada correctamente." });
+            }
+            else
+            {
+                return NotFound(new { mensaje = "No se pudo actualizar la contraseña. Verifique el ID del usuario." });
+            }
+        }
+
+
         // PUT: api/Usuarios - Editar un usuario
         [HttpPut]
         public async Task<IActionResult> Editar([FromBody] Usuarios usuario)
@@ -81,6 +105,7 @@ namespace restaurante_catracho_apirest.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { isSuccess = false, message = ex.Message });
             }
         }
+        
 
         // DELETE: api/Usuarios/{id_usuario} - Eliminar un usuario
         [HttpDelete("{id_usuario}")]

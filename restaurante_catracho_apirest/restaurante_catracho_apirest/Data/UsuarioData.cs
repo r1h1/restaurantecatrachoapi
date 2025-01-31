@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
+using BCrypt.Net;
 
 namespace restaurante_catracho_apirest.Data
 {
@@ -141,6 +142,39 @@ namespace restaurante_catracho_apirest.Data
                 {
                     Console.WriteLine($"Error en Editar (General): {ex.Message}");
                     respuesta = false;
+                }
+            }
+            return respuesta;
+        }
+
+        public async Task<bool> ActualizarClave(int idUsuario, string nuevaClave)
+        {
+            bool respuesta = false;
+
+            using (var con = new SqlConnection(conexion))
+            {
+                SqlCommand cmd = new SqlCommand("sp_UpdatePassword", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+
+                //Encriptar la clave antes de almacenarla
+                string nuevaClaveEncriptada = BCrypt.Net.BCrypt.HashPassword(nuevaClave);
+
+                cmd.Parameters.AddWithValue("@nueva_clave", nuevaClaveEncriptada);
+
+                try
+                {
+                    await con.OpenAsync();
+                    int filasAfectadas = await cmd.ExecuteNonQueryAsync();
+                    respuesta = filasAfectadas > 0;
+                }
+                catch (SqlException sqlx)
+                {
+                    Console.WriteLine($"Error en ActualizarClave (SQL): {sqlx.Number} - {sqlx.Message}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error en ActualizarClave (General): {ex.Message}");
                 }
             }
             return respuesta;

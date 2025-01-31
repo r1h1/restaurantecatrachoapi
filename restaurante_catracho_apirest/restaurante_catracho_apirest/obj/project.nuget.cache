@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ghwx5OOWzuE=",
+  "dgSpecHash": "939uHU/fLhQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\Desktop\\DanielBackup\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\PC\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

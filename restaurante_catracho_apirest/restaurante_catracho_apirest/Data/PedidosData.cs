@@ -1,9 +1,6 @@
 ﻿using restaurante_catracho_apirest.Models;
 using System.Data;
 using System.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace restaurante_catracho_apirest.Data
 {
@@ -16,7 +13,6 @@ namespace restaurante_catracho_apirest.Data
             conexion = configuration.GetConnectionString("CadenaSQL")!;
         }
 
-        // Listar todos los pedidos
         public async Task<List<Pedidos>> Lista()
         {
             List<Pedidos> lista = new List<Pedidos>();
@@ -35,11 +31,9 @@ namespace restaurante_catracho_apirest.Data
                         {
                             IdPedido = Convert.ToInt32(reader["id_pedido"]),
                             IdUsuario = Convert.ToInt32(reader["id_usuario"]),
-                            Estado = reader["estado"].ToString(),
+                            Estado = reader["estado"].ToString()!,
                             FechaCreacion = Convert.ToDateTime(reader["fecha_creacion"]),
-                            FechaEntregaEstimada = reader["fecha_entrega_estimada"] != DBNull.Value
-                                ? Convert.ToDateTime(reader["fecha_entrega_estimada"])
-                                : (DateTime?)null,
+                            FechaEntregaEstimada = reader["fecha_entrega_estimada"] as DateTime?,
                             MontoTotal = Convert.ToDecimal(reader["monto_total"])
                         });
                     }
@@ -48,10 +42,9 @@ namespace restaurante_catracho_apirest.Data
             return lista;
         }
 
-        // Obtener un pedido por ID
         public async Task<Pedidos> ObtenerId(int id_pedido)
         {
-            Pedidos pedido = null;
+            Pedidos objeto = new Pedidos();
 
             using (var con = new SqlConnection(conexion))
             {
@@ -62,38 +55,34 @@ namespace restaurante_catracho_apirest.Data
 
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    if (await reader.ReadAsync())
+                    while (await reader.ReadAsync())
                     {
-                        pedido = new Pedidos
+                        objeto = new Pedidos
                         {
                             IdPedido = Convert.ToInt32(reader["id_pedido"]),
                             IdUsuario = Convert.ToInt32(reader["id_usuario"]),
-                            Estado = reader["estado"].ToString(),
+                            Estado = reader["estado"].ToString()!,
                             FechaCreacion = Convert.ToDateTime(reader["fecha_creacion"]),
-                            FechaEntregaEstimada = reader["fecha_entrega_estimada"] != DBNull.Value
-                                ? Convert.ToDateTime(reader["fecha_entrega_estimada"])
-                                : (DateTime?)null,
+                            FechaEntregaEstimada = reader["fecha_entrega_estimada"] as DateTime?,
                             MontoTotal = Convert.ToDecimal(reader["monto_total"])
                         };
                     }
                 }
             }
-            return pedido;
+            return objeto;
         }
 
-        // Crear un pedido
-        public async Task<bool> Crear(Pedidos pedido)
+        public async Task<bool> Crear(Pedidos objeto)
         {
-            bool respuesta = false;
+            bool respuesta = true;
 
             using (var con = new SqlConnection(conexion))
             {
                 SqlCommand cmd = new SqlCommand("sp_InsertPedido", con);
-                cmd.Parameters.AddWithValue("@id_usuario", pedido.IdUsuario);
-                cmd.Parameters.AddWithValue("@estado", pedido.Estado.ToString());
-                cmd.Parameters.AddWithValue("@fecha_entrega_estimada",
-                    pedido.FechaEntregaEstimada.HasValue ? (object)pedido.FechaEntregaEstimada.Value : DBNull.Value);
-                cmd.Parameters.AddWithValue("@monto_total", pedido.MontoTotal);
+                cmd.Parameters.AddWithValue("@id_usuario", objeto.IdUsuario);
+                cmd.Parameters.AddWithValue("@estado", objeto.Estado);
+                cmd.Parameters.AddWithValue("@fecha_entrega_estimada", (object?)objeto.FechaEntregaEstimada ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@monto_total", objeto.MontoTotal);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 try
@@ -105,25 +94,24 @@ namespace restaurante_catracho_apirest.Data
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error en Crear: {ex.Message}");
+                    respuesta = false;
                 }
             }
             return respuesta;
         }
 
-        // Editar un pedido
-        public async Task<bool> Editar(Pedidos pedido)
+        public async Task<bool> Editar(Pedidos objeto)
         {
-            bool respuesta = false;
+            bool respuesta = true;
 
             using (var con = new SqlConnection(conexion))
             {
                 SqlCommand cmd = new SqlCommand("sp_UpdatePedido", con);
-                cmd.Parameters.AddWithValue("@id_pedido", pedido.IdPedido);
-                cmd.Parameters.AddWithValue("@id_usuario", pedido.IdUsuario);
-                cmd.Parameters.AddWithValue("@estado", pedido.Estado.ToString());
-                cmd.Parameters.AddWithValue("@fecha_entrega_estimada",
-                    pedido.FechaEntregaEstimada.HasValue ? (object)pedido.FechaEntregaEstimada.Value : DBNull.Value);
-                cmd.Parameters.AddWithValue("@monto_total", pedido.MontoTotal);
+                cmd.Parameters.AddWithValue("@id_pedido", objeto.IdPedido);
+                cmd.Parameters.AddWithValue("@id_usuario", objeto.IdUsuario);
+                cmd.Parameters.AddWithValue("@estado", objeto.Estado);
+                cmd.Parameters.AddWithValue("@fecha_entrega_estimada", (object?)objeto.FechaEntregaEstimada ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@monto_total", objeto.MontoTotal);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 try
@@ -135,12 +123,12 @@ namespace restaurante_catracho_apirest.Data
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error en Editar: {ex.Message}");
+                    respuesta = false;
                 }
             }
             return respuesta;
         }
 
-        // Eliminar un pedido
         public async Task<bool> Eliminar(int id_pedido)
         {
             bool respuesta = false;
@@ -160,6 +148,7 @@ namespace restaurante_catracho_apirest.Data
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error en Eliminar: {ex.Message}");
+                    respuesta = false;
                 }
             }
             return respuesta;

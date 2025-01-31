@@ -11,6 +11,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<UsuarioData>();
 builder.Services.AddSingleton<PedidosData>();
+builder.Services.AddSingleton<ProductoData>();
+builder.Services.AddSingleton<DetallePedidosData>();
+builder.Services.AddSingleton<PagosData>();
 
 var app = builder.Build();
 

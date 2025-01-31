@@ -8,7 +8,7 @@ CREATE TABLE Usuarios (
     id_usuario INT IDENTITY(1,1) PRIMARY KEY,
     nombre NVARCHAR(255) NOT NULL,
     correo NVARCHAR(255) UNIQUE NOT NULL,
-    contraseña NVARCHAR(MAX) NOT NULL,
+    contraseï¿½a NVARCHAR(MAX) NOT NULL,
     rol NVARCHAR(50) CHECK (rol IN ('1', '2', '3', '4')) NOT NULL,
     telefono NVARCHAR(20),
     direccion NVARCHAR(MAX)
@@ -53,10 +53,3 @@ CREATE TABLE Pagos (
     FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido) ON DELETE CASCADE
 );
 
-CREATE TABLE Colas_Prioridad (
-    id_cola INT IDENTITY(1,1) PRIMARY KEY,
-    id_pedido INT NOT NULL,
-    hora_solicitud DATETIME DEFAULT GETDATE(),
-    prioridad NVARCHAR(50) CHECK (prioridad IN ('1', '2', '3')) NOT NULL,
-    FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido) ON DELETE CASCADE
-);

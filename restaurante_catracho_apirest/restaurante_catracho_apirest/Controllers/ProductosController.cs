@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using restaurante_catracho_apirest.Data;
 using restaurante_catracho_apirest.Models;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace restaurante_catracho_apirest.Controllers
 {
+    [EnableCors("NuevaPolitica")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductosController : ControllerBase
@@ -20,6 +23,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/Productos - Obtener todos los productos
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Lista()
         {
             List<Productos> lista = await _data.Lista();
@@ -28,6 +32,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/Productos/{id_producto} - Obtener un producto por ID
         [HttpGet("{id_producto}")]
+        [Authorize]
         public async Task<IActionResult> Obtener(int id_producto)
         {
             var producto = await _data.ObtenerId(id_producto);
@@ -40,6 +45,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // POST: api/Productos - Crear un producto
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Crear([FromBody] Productos producto)
         {
             if (producto == null)
@@ -62,6 +68,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // PUT: api/Productos - Editar un producto
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Editar([FromBody] Productos producto)
         {
             if (producto == null || producto.IdProducto == 0)
@@ -84,6 +91,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // DELETE: api/Productos/{id_producto} - Eliminar un producto
         [HttpDelete("{id_producto}")]
+        [Authorize]
         public async Task<IActionResult> Eliminar(int id_producto)
         {
             try

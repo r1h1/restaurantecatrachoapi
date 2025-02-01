@@ -74,3 +74,11 @@ BEGIN
         PRINT 'Error: El usuario no existe.';
     END
 END;
+
+-- Leer un usuario por correo y clave
+ALTER PROCEDURE sp_GetUsuarioByEmailAndPass
+    @correo NVARCHAR(255)
+AS
+BEGIN
+    SELECT * FROM Usuarios WHERE correo = @correo;
+END;

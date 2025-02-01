@@ -6,9 +6,12 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace restaurante_catracho_apirest.Controllers
 {
+    [EnableCors("NuevaPolitica")]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerBase
@@ -22,6 +25,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/Usuarios - Obtener todos los usuarios
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Lista()
         {
             var lista = await _data.Lista();
@@ -30,6 +34,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/Usuarios/{id_usuario} - Obtener un usuario por ID
         [HttpGet("{id_usuario}")]
+        [Authorize]
         public async Task<IActionResult> Obtener(int id_usuario)
         {
             var usuario = await _data.ObtenerId(id_usuario);
@@ -42,6 +47,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // POST: api/Usuarios - Crear un usuario
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Crear([FromBody] Usuarios usuario)
         {
             if (usuario == null)
@@ -64,6 +70,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // POST: api/Usuarios - Modificar clave de usuario
         [HttpPost("ActualizarClave")]
+        [Authorize]
         public async Task<IActionResult> ActualizarClave([FromBody] ActualizarClaveRequest request)
         {
             if (request == null || request.IdUsuario <= 0 || string.IsNullOrEmpty(request.NuevaClave))
@@ -86,6 +93,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // PUT: api/Usuarios - Editar un usuario
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Editar([FromBody] Usuarios usuario)
         {
             if (usuario == null || usuario.id_usuario == 0)
@@ -109,6 +117,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // DELETE: api/Usuarios/{id_usuario} - Eliminar un usuario
         [HttpDelete("{id_usuario}")]
+        [Authorize]
         public async Task<IActionResult> Eliminar(int id_usuario)
         {
             try

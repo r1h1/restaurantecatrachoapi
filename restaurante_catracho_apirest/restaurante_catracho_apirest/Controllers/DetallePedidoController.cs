@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using restaurante_catracho_apirest.Data;
 using restaurante_catracho_apirest.Models;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace restaurante_catracho_apirest.Controllers
 {
+    [EnableCors("NuevaPolitica")]
     [Route("api/[controller]")]
     [ApiController]
     public class DetallesPedidoController : ControllerBase
@@ -20,6 +23,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/DetallesPedido - Obtener todos los detalles de pedidos
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Lista()
         {
             List<DetallePedidos> lista = await _data.Lista();
@@ -28,6 +32,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/DetallesPedido/{id_detalle} - Obtener un detalle de pedido por ID
         [HttpGet("{id_detalle}")]
+        [Authorize]
         public async Task<IActionResult> Obtener(int id_detalle)
         {
             var detalle = await _data.ObtenerId(id_detalle);
@@ -40,6 +45,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // POST: api/DetallesPedido - Crear un detalle de pedido
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Crear([FromBody] DetallePedidos detalle)
         {
             if (detalle == null)
@@ -62,6 +68,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // PUT: api/DetallesPedido - Editar un detalle de pedido
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Editar([FromBody] DetallePedidos detalle)
         {
             if (detalle == null || detalle.IdDetalle == 0)
@@ -84,6 +91,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // DELETE: api/DetallesPedido/{id_detalle} - Eliminar un detalle de pedido
         [HttpDelete("{id_detalle}")]
+        [Authorize]
         public async Task<IActionResult> Eliminar(int id_detalle)
         {
             try

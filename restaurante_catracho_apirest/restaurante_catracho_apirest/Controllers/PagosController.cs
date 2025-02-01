@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using restaurante_catracho_apirest.Data;
 using restaurante_catracho_apirest.Models;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace restaurante_catracho_apirest.Controllers
 {
+    [EnableCors("NuevaPolitica")]
     [Route("api/[controller]")]
     [ApiController]
     public class PagosController : ControllerBase
@@ -20,6 +23,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/Pagos - Obtener todos los pagos
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Lista()
         {
             List<Pagos> lista = await _data.Lista();
@@ -28,6 +32,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/Pagos/{id_pago} - Obtener un pago por ID
         [HttpGet("{id_pago}")]
+        [Authorize]
         public async Task<IActionResult> Obtener(int id_pago)
         {
             var pago = await _data.ObtenerId(id_pago);
@@ -40,6 +45,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // POST: api/Pagos - Crear un pago
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Crear([FromBody] Pagos pago)
         {
             if (pago == null)
@@ -62,6 +68,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // PUT: api/Pagos - Editar un pago
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Editar([FromBody] Pagos pago)
         {
             if (pago == null || pago.IdPago == 0)
@@ -84,6 +91,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // DELETE: api/Pagos/{id_pago} - Eliminar un pago
         [HttpDelete("{id_pago}")]
+        [Authorize]
         public async Task<IActionResult> Eliminar(int id_pago)
         {
             try

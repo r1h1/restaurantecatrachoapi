@@ -85,7 +85,7 @@ namespace restaurante_catracho_apirest.Data
                 SqlCommand cmd = new SqlCommand("sp_InsertUsuario", con);
                 cmd.Parameters.AddWithValue("@nombre", objeto.nombre);
                 cmd.Parameters.AddWithValue("@correo", objeto.correo);
-                cmd.Parameters.AddWithValue("@clave", objeto.clave);
+                cmd.Parameters.AddWithValue("@clave", BCrypt.Net.BCrypt.HashPassword(objeto.clave));
                 cmd.Parameters.AddWithValue("@rol", objeto.rol);
                 cmd.Parameters.AddWithValue("@telefono", objeto.telefono);
                 cmd.Parameters.AddWithValue("@direccion", objeto.direccion);

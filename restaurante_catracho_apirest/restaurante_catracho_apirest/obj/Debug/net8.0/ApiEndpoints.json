@@ -296,6 +296,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "restaurante_catracho_apirest.Controllers.SeguridadController",
+    "Method": "ValidarUsuario",
+    "RelativePath": "api/Seguridad/{correo}/{clave}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "correo",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "clave",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "restaurante_catracho_apirest.Controllers.UsuariosController",
     "Method": "Lista",
     "RelativePath": "api/Usuarios",
@@ -380,6 +401,22 @@
       {
         "Name": "request",
         "Type": "restaurante_catracho_apirest.Models.ActualizarClaveRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "restaurante_catracho_apirest.Controllers.SeguridadController",
+    "Method": "Comparar",
+    "RelativePath": "v1/Security",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "restaurante_catracho_apirest.Models.Seguridad",
         "IsRequired": true
       }
     ],

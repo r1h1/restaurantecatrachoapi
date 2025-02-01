@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using restaurante_catracho_apirest.Data;
 using restaurante_catracho_apirest.Models;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace restaurante_catracho_apirest.Controllers
 {
+    [EnableCors("NuevaPolitica")]
     [Route("api/[controller]")]
     [ApiController]
     public class PedidosController : ControllerBase
@@ -20,6 +23,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/Pedidos - Obtener todos los pedidos
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Lista()
         {
             List<Pedidos> lista = await _data.Lista();
@@ -28,6 +32,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: api/Pedidos/{id_pedido} - Obtener un pedido por ID
         [HttpGet("{id_pedido}")]
+        [Authorize]
         public async Task<IActionResult> Obtener(int id_pedido)
         {
             var pedido = await _data.ObtenerId(id_pedido);
@@ -40,6 +45,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // POST: api/Pedidos - Crear un pedido
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Crear([FromBody] Pedidos pedido)
         {
             if (pedido == null)
@@ -62,6 +68,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // PUT: api/Pedidos - Editar un pedido
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> Editar([FromBody] Pedidos pedido)
         {
             if (pedido == null || pedido.IdPedido == 0)
@@ -84,6 +91,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // DELETE: api/Pedidos/{id_pedido} - Eliminar un pedido
         [HttpDelete("{id_pedido}")]
+        [Authorize]
         public async Task<IActionResult> Eliminar(int id_pedido)
         {
             try

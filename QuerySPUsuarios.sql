@@ -1,7 +1,7 @@
 -- Procedimientos CRUD para la tabla Usuarios
 
 -- Crear un usuario
-ALTER PROCEDURE sp_InsertUsuario
+CREATE PROCEDURE sp_InsertUsuario
     @nombre NVARCHAR(255),
     @correo NVARCHAR(255),
     @contraseña NVARCHAR(MAX),
@@ -31,7 +31,7 @@ BEGIN
 END;
 
 -- Actualizar un usuario
-ALTER PROCEDURE sp_UpdateUsuario
+CREATE PROCEDURE sp_UpdateUsuario
     @id_usuario INT,
     @nombre NVARCHAR(255),
     @correo NVARCHAR(255),
@@ -56,7 +56,7 @@ END;
 
 
 -- Actualizar contrase�a
-ALTER PROCEDURE sp_UpdatePassword
+CREATE PROCEDURE sp_UpdatePassword
     @id_usuario INT,
     @nueva_clave NVARCHAR(MAX)
 AS
@@ -76,7 +76,7 @@ BEGIN
 END;
 
 -- Leer un usuario por correo y clave
-ALTER PROCEDURE sp_GetUsuarioByEmailAndPass
+CREATE PROCEDURE sp_GetUsuarioByEmailAndPass
     @correo NVARCHAR(255)
 AS
 BEGIN

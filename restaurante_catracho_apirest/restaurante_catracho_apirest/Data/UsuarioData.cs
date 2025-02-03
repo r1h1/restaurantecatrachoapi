@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Runtime.CompilerServices;
 using BCrypt.Net;
+using System.Text;
 
 namespace restaurante_catracho_apirest.Data
 {
@@ -31,13 +32,13 @@ namespace restaurante_catracho_apirest.Data
                     {
                         lista.Add(new Usuarios
                         {
-                            id_usuario = Convert.ToInt32(reader["id_usuario"])!,
-                            nombre = reader["nombre"].ToString()!,
-                            correo = reader["correo"].ToString()!,
-                            clave = reader["clave"].ToString()!,
-                            rol = reader["rol"].ToString()!,
-                            telefono = reader["telefono"].ToString()!,
-                            direccion = reader["direccion"].ToString()!
+                            id_usuario = Convert.ToInt32(reader["id_usuario"]),
+                            nombre = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["nombre"].ToString())),
+                            correo = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["correo"].ToString())),
+                            clave = reader["clave"].ToString(), // Se mantiene sin cambios
+                            rol = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["rol"].ToString())),
+                            telefono = reader["telefono"] != DBNull.Value ? Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["telefono"].ToString())) : null,
+                            direccion = reader["direccion"] != DBNull.Value ? Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["direccion"].ToString())) : null
                         });
                     }
                 }
@@ -63,12 +64,12 @@ namespace restaurante_catracho_apirest.Data
                         objeto = new Usuarios
                         {
                             id_usuario = Convert.ToInt32(reader["id_usuario"]),
-                            nombre = reader["nombre"].ToString(),
-                            correo = reader["correo"].ToString(),
-                            clave = reader["clave"].ToString(),
-                            rol = reader["rol"].ToString(),
-                            telefono = reader["telefono"].ToString(),
-                            direccion = reader["direccion"].ToString()
+                            nombre = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["nombre"].ToString())),
+                            correo = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["correo"].ToString())),
+                            clave = reader["clave"].ToString(), // Se mantiene sin cambios
+                            rol = Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["rol"].ToString())),
+                            telefono = reader["telefono"] != DBNull.Value ? Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["telefono"].ToString())) : null,
+                            direccion = reader["direccion"] != DBNull.Value ? Convert.ToBase64String(Encoding.UTF8.GetBytes(reader["direccion"].ToString())) : null
                         };
                     }
                 }

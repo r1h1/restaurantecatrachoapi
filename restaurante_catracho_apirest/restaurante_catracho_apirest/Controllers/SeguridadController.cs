@@ -28,7 +28,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // POST: Autenticación de usuario
         [HttpPost]
-        [Route("/v1/Security")]
+        [Route("/api/Auth")]
         public async Task<IActionResult> Comparar([FromBody] Seguridad request)
         {
             if (!string.IsNullOrEmpty(request.correo) && !string.IsNullOrEmpty(request.contraseña))
@@ -63,14 +63,10 @@ namespace restaurante_catracho_apirest.Controllers
                         return StatusCode(StatusCodes.Status201Created, new
                         {
                             code = 201,
-                            message = "Ok",
-                            id_usuario = Convert.ToBase64String(Encoding.UTF8.GetBytes(usuario.id_usuario.ToString())),
-                            nombre = Convert.ToBase64String(Encoding.UTF8.GetBytes(usuario.nombre)),
-                            correo = Convert.ToBase64String(Encoding.UTF8.GetBytes(usuario.correo)),
-                            rol = Convert.ToBase64String(Encoding.UTF8.GetBytes(usuario.rol)),
-                            telefono = Convert.ToBase64String(Encoding.UTF8.GetBytes(usuario.telefono)),
-                            direccion = Convert.ToBase64String(Encoding.UTF8.GetBytes(usuario.direccion)),
-                            auth = tokenCreado
+                            message = "Authorization Created!",
+                            user = Convert.ToBase64String(Encoding.UTF8.GetBytes(usuario.id_usuario.ToString())),
+                            is_created = Convert.ToBase64String(Encoding.UTF8.GetBytes(usuario.correo)),
+                            and_authorizated = tokenCreado
                         });
                     }
                     else
@@ -94,6 +90,7 @@ namespace restaurante_catracho_apirest.Controllers
 
         // GET: Validar usuario por correo y clave
         [HttpGet("{correo}/{clave}")]
+        [Authorize]
         public async Task<IActionResult> ValidarUsuario(string correo, string clave)
         {
             var usuario = await _seguridadData.ValidarUsuario(correo, clave);

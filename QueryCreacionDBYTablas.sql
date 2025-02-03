@@ -10,7 +10,7 @@ CREATE TABLE Usuarios (
     correo NVARCHAR(255) UNIQUE NOT NULL,
     clave NVARCHAR(MAX) NOT NULL,
     rol NVARCHAR(50) CHECK (rol IN ('1', '2', '3', '4')) NOT NULL,
-    telefono NVARCHAR(20),
+    telefono NVARCHAR(20) UNIQUE NOT NULL,
     direccion NVARCHAR(MAX)
 );
 

@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\controllers\\seguridadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\controllers\\seguridadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\data\\seguridaddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\data\\seguridaddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\models\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\models\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\data\\usuariodata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\data\\usuariodata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,31 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SeguridadData.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Data\\SeguridadData.cs",
-              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Data\\SeguridadData.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Data\\SeguridadData.cs",
-              "RelativeToolTip": "restaurante_catracho_apirest\\Data\\SeguridadData.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAQwCsAAABJAAAAAAAAAA==",
+              "Title": "Usuarios.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Models\\Usuarios.cs",
+              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Models\\Usuarios.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Models\\Usuarios.cs",
+              "RelativeToolTip": "restaurante_catracho_apirest\\Models\\Usuarios.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA3wA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T21:33:08.406Z"
+              "WhenOpened": "2025-02-20T20:42:42.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuarioData.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Data\\UsuarioData.cs",
+              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Data\\UsuarioData.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Data\\UsuarioData.cs",
+              "RelativeToolTip": "restaurante_catracho_apirest\\Data\\UsuarioData.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAmwKEAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T20:38:18.009Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SeguridadController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Controllers\\SeguridadController.cs",
-              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Controllers\\SeguridadController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Controllers\\SeguridadController.cs",
-              "RelativeToolTip": "restaurante_catracho_apirest\\Controllers\\SeguridadController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAqwCYAAAARAAAAAAAAAA==",
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "restaurante_catracho_apirest\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAiwEcAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T21:00:12.361Z",
+              "WhenOpened": "2025-02-20T20:38:16.378Z",
               "EditorCaption": ""
             }
           ]

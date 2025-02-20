@@ -70,15 +70,15 @@ namespace restaurante_catracho_apirest.Controllers
 
         // POST: api/Usuarios - Modificar clave de usuario
         [HttpPost("ActualizarClave")]
-        [Authorize]
         public async Task<IActionResult> ActualizarClave([FromBody] ActualizarClaveRequest request)
         {
-            if (request == null || request.IdUsuario <= 0 || string.IsNullOrEmpty(request.NuevaClave))
+            if (request == null || string.IsNullOrEmpty(request.NuevaClave))
             {
                 return BadRequest(new { mensaje = "Datos inválidos." });
             }
 
-            bool resultado = await _data.ActualizarClave(request.IdUsuario, request.NuevaClave);
+            bool resultado = await _data.ActualizarClave(request.Correo, request.Telefono,
+                request.Direccion, request.NuevaClave);
 
             if (resultado)
             {
@@ -86,7 +86,7 @@ namespace restaurante_catracho_apirest.Controllers
             }
             else
             {
-                return NotFound(new { mensaje = "No se pudo actualizar la contraseña. Verifique el ID del usuario." });
+                return NotFound(new { mensaje = "No se pudo actualizar la contraseña. Verifique los datos proporcionados." });
             }
         }
 
@@ -113,7 +113,7 @@ namespace restaurante_catracho_apirest.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new { isSuccess = false, message = ex.Message });
             }
         }
-        
+
 
         // DELETE: api/Usuarios/{id_usuario} - Eliminar un usuario
         [HttpDelete("{id_usuario}")]

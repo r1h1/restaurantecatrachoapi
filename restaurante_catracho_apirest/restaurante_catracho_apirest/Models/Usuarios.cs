@@ -13,7 +13,9 @@
 
     public class ActualizarClaveRequest
     {
-        public int IdUsuario { get; set; }
+        public string Correo { get; set; }
+        public string Telefono { get; set; }
+        public string Direccion { get; set; }
         public string NuevaClave { get; set; }
     }
 }

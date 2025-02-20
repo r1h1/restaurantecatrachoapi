@@ -55,25 +55,40 @@ BEGIN
 END;
 
 
--- Actualizar contrase�a
-CREATE PROCEDURE sp_UpdatePassword
-    @id_usuario INT,
+-- Actualizar contraseña solo si coinciden todos los datos
+ALTER PROCEDURE sp_UpdatePassword
+    @correo NVARCHAR(100),
+    @telefono NVARCHAR(50),
+    @direccion NVARCHAR(200),
     @nueva_clave NVARCHAR(MAX)
 AS
 BEGIN
-    -- Verificar si el usuario existe antes de actualizar
-    IF EXISTS (SELECT 1 FROM Usuarios WHERE id_usuario = @id_usuario)
+    DECLARE @id_usuario INT;
+
+    -- Buscar al usuario con los datos coincidentes
+    SELECT @id_usuario = id_usuario
+    FROM Usuarios 
+    WHERE correo = @correo 
+      AND telefono = @telefono 
+      AND direccion = @direccion;
+
+    -- Verificar si se encontró un usuario con los datos proporcionados
+    IF @id_usuario IS NOT NULL
     BEGIN
+        -- Si se encontró, actualizar la clave
         UPDATE Usuarios
         SET clave = @nueva_clave
         WHERE id_usuario = @id_usuario;
+        
         PRINT 'Clave actualizada correctamente.';
     END
     ELSE
     BEGIN
-        PRINT 'Error: El usuario no existe.';
+        -- Si no se encontró ningún usuario, mostrar mensaje de error
+        PRINT 'Error: Datos no coinciden o el usuario no existe.';
     END
 END;
+
 
 -- Leer un usuario por correo y clave
 CREATE PROCEDURE sp_GetUsuarioByEmailAndPass

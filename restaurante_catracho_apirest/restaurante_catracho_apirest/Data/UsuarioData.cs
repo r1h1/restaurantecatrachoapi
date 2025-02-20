@@ -148,7 +148,8 @@ namespace restaurante_catracho_apirest.Data
             return respuesta;
         }
 
-        public async Task<bool> ActualizarClave(int idUsuario, string nuevaClave)
+        public async Task<bool> ActualizarClave(string correo, string telefono,
+                                                string direccion, string nuevaClave)
         {
             bool respuesta = false;
 
@@ -156,11 +157,12 @@ namespace restaurante_catracho_apirest.Data
             {
                 SqlCommand cmd = new SqlCommand("sp_UpdatePassword", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+                cmd.Parameters.AddWithValue("@correo", correo);
+                cmd.Parameters.AddWithValue("@telefono", telefono);
+                cmd.Parameters.AddWithValue("@direccion", direccion);
 
-                //Encriptar la clave antes de almacenarla
+                // Encriptar la clave antes de almacenarla
                 string nuevaClaveEncriptada = BCrypt.Net.BCrypt.HashPassword(nuevaClave);
-
                 cmd.Parameters.AddWithValue("@nueva_clave", nuevaClaveEncriptada);
 
                 try
@@ -180,6 +182,7 @@ namespace restaurante_catracho_apirest.Data
             }
             return respuesta;
         }
+
 
         public async Task<bool> Eliminar(int id_usuario)
         {

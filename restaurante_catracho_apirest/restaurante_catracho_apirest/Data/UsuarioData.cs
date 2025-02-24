@@ -100,19 +100,19 @@ namespace restaurante_catracho_apirest.Data
                 }
                 catch (SqlException sqlx)
                 {
-                    Console.WriteLine($"Error en Editar (SQL): {sqlx.Number} - {sqlx.Message}");
+                    Console.WriteLine($"Error en Crear (SQL): {sqlx.Number} - {sqlx.Message}");
                     respuesta = false;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error en Editar (General): {ex.Message}");
+                    Console.WriteLine($"Error en Crear (General): {ex.Message}");
                     respuesta = false;
                 }
             }
             return respuesta;
         }
 
-        public async Task<bool> Editar(Usuarios objeto)
+        public async Task<bool> Editar(UsuariosEditar objeto)
         {
             bool respuesta = true;
 
@@ -122,7 +122,6 @@ namespace restaurante_catracho_apirest.Data
                 cmd.Parameters.AddWithValue("@id_usuario", Convert.ToInt32(objeto.id_usuario));
                 cmd.Parameters.AddWithValue("@nombre", objeto.nombre);
                 cmd.Parameters.AddWithValue("@correo", objeto.correo);
-                cmd.Parameters.AddWithValue("@clave", objeto.clave);
                 cmd.Parameters.AddWithValue("@rol", objeto.rol);
                 cmd.Parameters.AddWithValue("@telefono", objeto.telefono);
                 cmd.Parameters.AddWithValue("@direccion", objeto.direccion);

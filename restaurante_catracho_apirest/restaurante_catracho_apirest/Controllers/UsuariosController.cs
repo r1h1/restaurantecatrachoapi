@@ -94,16 +94,17 @@ namespace restaurante_catracho_apirest.Controllers
         // PUT: api/Usuarios - Editar un usuario
         [HttpPut]
         [Authorize]
-        public async Task<IActionResult> Editar([FromBody] Usuarios usuario)
+        public async Task<IActionResult> Editar([FromBody] UsuariosEditar usuarioEditar)
         {
-            if (usuario == null || usuario.id_usuario == 0)
+            if (usuarioEditar == null || usuarioEditar.id_usuario == 0)
             {
                 return BadRequest(new { isSuccess = false, message = "Datos inválidos" });
             }
 
             try
             {
-                bool respuesta = await _data.Editar(usuario);
+                // Llamar directamente al método Editar con UsuariosEditar
+                bool respuesta = await _data.Editar(usuarioEditar);
                 return respuesta
                     ? Ok(new { isSuccess = true, message = "Usuario actualizado correctamente" })
                     : NotFound(new { isSuccess = false, message = "Usuario no encontrado" });

@@ -31,27 +31,18 @@ BEGIN
 END;
 
 -- Actualizar un usuario
-CREATE PROCEDURE sp_UpdateUsuario
+ALTER PROCEDURE sp_UpdateUsuario
     @id_usuario INT,
     @nombre NVARCHAR(255),
     @correo NVARCHAR(255),
-    @clave NVARCHAR(MAX),
     @rol NVARCHAR(50),
     @telefono NVARCHAR(20) = NULL,
     @direccion NVARCHAR(MAX) = NULL
 AS
 BEGIN
     UPDATE Usuarios
-    SET nombre = @nombre, correo = @correo, clave = @clave, rol = @rol, telefono = @telefono, direccion = @direccion
+    SET nombre = @nombre, correo = @correo, rol = @rol, telefono = @telefono, direccion = @direccion
     WHERE id_usuario = @id_usuario;
-END;
-
--- Eliminar un usuario
-CREATE PROCEDURE sp_DeleteUsuario
-    @id_usuario INT
-AS
-BEGIN
-    DELETE FROM Usuarios WHERE id_usuario = @id_usuario;
 END;
 
 

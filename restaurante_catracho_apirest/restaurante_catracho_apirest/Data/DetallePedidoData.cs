@@ -32,6 +32,7 @@ namespace restaurante_catracho_apirest.Data
                             IdDetalle = Convert.ToInt32(reader["id_detalle"]),
                             IdPedido = Convert.ToInt32(reader["id_pedido"]),
                             IdProducto = Convert.ToInt32(reader["id_producto"]),
+                            NumeroPedido = reader["numero_pedido"].ToString()!,
                             Cantidad = Convert.ToInt32(reader["cantidad"]),
                             PrecioUnitario = Convert.ToDecimal(reader["precio_unitario"])
                         });
@@ -61,6 +62,7 @@ namespace restaurante_catracho_apirest.Data
                             IdDetalle = Convert.ToInt32(reader["id_detalle"]),
                             IdPedido = Convert.ToInt32(reader["id_pedido"]),
                             IdProducto = Convert.ToInt32(reader["id_producto"]),
+                            NumeroPedido = reader["numero_pedido"].ToString()!,
                             Cantidad = Convert.ToInt32(reader["cantidad"]),
                             PrecioUnitario = Convert.ToDecimal(reader["precio_unitario"])
                         };
@@ -79,6 +81,7 @@ namespace restaurante_catracho_apirest.Data
                 SqlCommand cmd = new SqlCommand("sp_InsertDetallePedido", con);
                 cmd.Parameters.AddWithValue("@id_pedido", objeto.IdPedido);
                 cmd.Parameters.AddWithValue("@id_producto", objeto.IdProducto);
+                cmd.Parameters.AddWithValue("@numero_pedido", objeto.NumeroPedido);
                 cmd.Parameters.AddWithValue("@cantidad", objeto.Cantidad);
                 cmd.Parameters.AddWithValue("@precio_unitario", objeto.PrecioUnitario);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -108,6 +111,7 @@ namespace restaurante_catracho_apirest.Data
                 cmd.Parameters.AddWithValue("@id_detalle", objeto.IdDetalle);
                 cmd.Parameters.AddWithValue("@id_pedido", objeto.IdPedido);
                 cmd.Parameters.AddWithValue("@id_producto", objeto.IdProducto);
+                cmd.Parameters.AddWithValue("@numero_pedido", objeto.NumeroPedido);
                 cmd.Parameters.AddWithValue("@cantidad", objeto.Cantidad);
                 cmd.Parameters.AddWithValue("@precio_unitario", objeto.PrecioUnitario);
                 cmd.CommandType = CommandType.StoredProcedure;

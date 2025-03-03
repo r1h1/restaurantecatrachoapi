@@ -4,14 +4,14 @@
 CREATE PROCEDURE sp_InsertUsuario
     @nombre NVARCHAR(255),
     @correo NVARCHAR(255),
-    @contraseña NVARCHAR(MAX),
+    @clave NVARCHAR(MAX),
     @rol NVARCHAR(50),
     @telefono NVARCHAR(20) = NULL,
     @direccion NVARCHAR(MAX) = NULL
 AS
 BEGIN
-    INSERT INTO Usuarios (nombre, correo, contraseña, rol, telefono, direccion)
-    VALUES (@nombre, @correo, @contraseña, @rol, @telefono, @direccion);
+    INSERT INTO Usuarios (nombre, correo, clave, rol, telefono, direccion)
+    VALUES (@nombre, @correo, @clave, @rol, @telefono, @direccion);
 END;
 GO
 

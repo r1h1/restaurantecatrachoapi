@@ -31,6 +31,7 @@ namespace restaurante_catracho_apirest.Data
                         {
                             IdPedido = Convert.ToInt32(reader["id_pedido"]),
                             IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                            NumeroPedido = reader["numero_pedido"].ToString()!,
                             Estado = reader["estado"].ToString()!,
                             FechaCreacion = Convert.ToDateTime(reader["fecha_creacion"]),
                             FechaEntregaEstimada = reader["fecha_entrega_estimada"] as DateTime?,
@@ -61,6 +62,7 @@ namespace restaurante_catracho_apirest.Data
                         {
                             IdPedido = Convert.ToInt32(reader["id_pedido"]),
                             IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                            NumeroPedido = reader["numero_pedido"].ToString()!,
                             Estado = reader["estado"].ToString()!,
                             FechaCreacion = Convert.ToDateTime(reader["fecha_creacion"]),
                             FechaEntregaEstimada = reader["fecha_entrega_estimada"] as DateTime?,
@@ -80,6 +82,7 @@ namespace restaurante_catracho_apirest.Data
             {
                 SqlCommand cmd = new SqlCommand("sp_InsertPedido", con);
                 cmd.Parameters.AddWithValue("@id_usuario", objeto.IdUsuario);
+                cmd.Parameters.AddWithValue("@numero_pedido", objeto.NumeroPedido);
                 cmd.Parameters.AddWithValue("@estado", objeto.Estado);
                 cmd.Parameters.AddWithValue("@fecha_entrega_estimada", (object?)objeto.FechaEntregaEstimada ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@monto_total", objeto.MontoTotal);
@@ -109,6 +112,7 @@ namespace restaurante_catracho_apirest.Data
                 SqlCommand cmd = new SqlCommand("sp_UpdatePedido", con);
                 cmd.Parameters.AddWithValue("@id_pedido", objeto.IdPedido);
                 cmd.Parameters.AddWithValue("@id_usuario", objeto.IdUsuario);
+                cmd.Parameters.AddWithValue("@numero_pedido", objeto.NumeroPedido);
                 cmd.Parameters.AddWithValue("@estado", objeto.Estado);
                 cmd.Parameters.AddWithValue("@fecha_entrega_estimada", (object?)objeto.FechaEntregaEstimada ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@monto_total", objeto.MontoTotal);

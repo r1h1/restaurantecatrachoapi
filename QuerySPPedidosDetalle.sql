@@ -1,22 +1,24 @@
--- Procedimientos CRUD para la tabla Detalles_Pedidos
+-- Procedimientos CRUD para la tabla Detalles_Pedidos con el nuevo campo numero_pedido
 
 -- Crear un detalle de pedido
 CREATE PROCEDURE sp_InsertDetallePedido
     @id_pedido INT,
     @id_producto INT,
+    @numero_pedido VARCHAR(255),
     @cantidad INT,
     @precio_unitario DECIMAL(10,2)
 AS
 BEGIN
-    INSERT INTO Detalles_Pedidos (id_pedido, id_producto, cantidad, precio_unitario)
-    VALUES (@id_pedido, @id_producto, @cantidad, @precio_unitario);
+    INSERT INTO Detalles_Pedidos (id_pedido, id_producto, numero_pedido, cantidad, precio_unitario)
+    VALUES (@id_pedido, @id_producto, @numero_pedido, @cantidad, @precio_unitario);
 END;
 
 -- Leer todos los detalles de pedidos
 CREATE PROCEDURE sp_GetDetallesPedidos
 AS
 BEGIN
-    SELECT * FROM Detalles_Pedidos;
+    SELECT id_detalle, id_pedido, id_producto, numero_pedido, cantidad, precio_unitario 
+    FROM Detalles_Pedidos;
 END;
 
 -- Leer un detalle de pedido por ID
@@ -24,7 +26,19 @@ CREATE PROCEDURE sp_GetDetallePedidoById
     @id_detalle INT
 AS
 BEGIN
-    SELECT * FROM Detalles_Pedidos WHERE id_detalle = @id_detalle;
+    SELECT id_detalle, id_pedido, id_producto, numero_pedido, cantidad, precio_unitario 
+    FROM Detalles_Pedidos 
+    WHERE id_detalle = @id_detalle;
+END;
+
+-- Leer detalles de pedido por número de pedido (nuevo SP)
+CREATE PROCEDURE sp_GetDetallesPedidoByNumeroPedido
+    @numero_pedido VARCHAR(255)
+AS
+BEGIN
+    SELECT id_detalle, id_pedido, id_producto, numero_pedido, cantidad, precio_unitario 
+    FROM Detalles_Pedidos 
+    WHERE numero_pedido = @numero_pedido;
 END;
 
 -- Actualizar un detalle de pedido
@@ -32,12 +46,17 @@ CREATE PROCEDURE sp_UpdateDetallePedido
     @id_detalle INT,
     @id_pedido INT,
     @id_producto INT,
+    @numero_pedido VARCHAR(255),
     @cantidad INT,
     @precio_unitario DECIMAL(10,2)
 AS
 BEGIN
     UPDATE Detalles_Pedidos
-    SET id_pedido = @id_pedido, id_producto = @id_producto, cantidad = @cantidad, precio_unitario = @precio_unitario
+    SET id_pedido = @id_pedido, 
+        id_producto = @id_producto, 
+        numero_pedido = @numero_pedido, 
+        cantidad = @cantidad, 
+        precio_unitario = @precio_unitario
     WHERE id_detalle = @id_detalle;
 END;
 

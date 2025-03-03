@@ -26,6 +26,7 @@ CREATE TABLE Productos (
 CREATE TABLE Pedidos (
     id_pedido INT IDENTITY(1,1) PRIMARY KEY,
     id_usuario INT NOT NULL,
+    numero_pedido VARCHAR(255) UNIQUE NOT NULL,
     estado NVARCHAR(50) CHECK (estado IN ('1', '2', '3', '4')) NOT NULL,
     fecha_creacion DATETIME DEFAULT GETDATE(),
     fecha_entrega_estimada DATETIME,
@@ -37,6 +38,7 @@ CREATE TABLE Detalles_Pedidos (
     id_detalle INT IDENTITY(1,1) PRIMARY KEY,
     id_pedido INT NOT NULL,
     id_producto INT NOT NULL,
+    numero_pedido VARCHAR(255),
     cantidad INT CHECK (cantidad > 0) NOT NULL,
     precio_unitario DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido) ON DELETE CASCADE,
@@ -46,6 +48,7 @@ CREATE TABLE Detalles_Pedidos (
 CREATE TABLE Pagos (
     id_pago INT IDENTITY(1,1) PRIMARY KEY,
     id_pedido INT NOT NULL,
+    numero_pedido VARCHAR(255),
     monto DECIMAL(10,2) NOT NULL,
     metodo_pago NVARCHAR(50) CHECK (metodo_pago IN ('1', '2', '3')) NOT NULL,
     fecha_pago DATETIME DEFAULT GETDATE(),

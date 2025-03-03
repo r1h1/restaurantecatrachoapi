@@ -4,6 +4,7 @@
     {
         public int IdPago { get; set; }
         public int IdPedido { get; set; }
+        public string NumeroPedido { get; set; }
         public decimal Monto { get; set; }
         public string MetodoPago { get; set; }
         public DateTime FechaPago { get; set; }

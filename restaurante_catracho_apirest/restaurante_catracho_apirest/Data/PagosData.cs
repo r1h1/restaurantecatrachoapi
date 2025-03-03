@@ -31,6 +31,7 @@ namespace restaurante_catracho_apirest.Data
                         {
                             IdPago = Convert.ToInt32(reader["id_pago"]),
                             IdPedido = Convert.ToInt32(reader["id_pedido"]),
+                            NumeroPedido = reader["numero_pedido"].ToString()!,
                             Monto = Convert.ToDecimal(reader["monto"]),
                             MetodoPago = reader["metodo_pago"].ToString()!,
                             FechaPago = Convert.ToDateTime(reader["fecha_pago"]),
@@ -61,6 +62,7 @@ namespace restaurante_catracho_apirest.Data
                         {
                             IdPago = Convert.ToInt32(reader["id_pago"]),
                             IdPedido = Convert.ToInt32(reader["id_pedido"]),
+                            NumeroPedido = reader["numero_pedido"].ToString()!,
                             Monto = Convert.ToDecimal(reader["monto"]),
                             MetodoPago = reader["metodo_pago"].ToString()!,
                             FechaPago = Convert.ToDateTime(reader["fecha_pago"]),
@@ -80,6 +82,7 @@ namespace restaurante_catracho_apirest.Data
             {
                 SqlCommand cmd = new SqlCommand("sp_InsertPago", con);
                 cmd.Parameters.AddWithValue("@id_pedido", objeto.IdPedido);
+                cmd.Parameters.AddWithValue("@numero_pedido", objeto.NumeroPedido);
                 cmd.Parameters.AddWithValue("@monto", objeto.Monto);
                 cmd.Parameters.AddWithValue("@metodo_pago", objeto.MetodoPago);
                 cmd.Parameters.AddWithValue("@estado_pago", objeto.EstadoPago);
@@ -109,6 +112,7 @@ namespace restaurante_catracho_apirest.Data
                 SqlCommand cmd = new SqlCommand("sp_UpdatePago", con);
                 cmd.Parameters.AddWithValue("@id_pago", objeto.IdPago);
                 cmd.Parameters.AddWithValue("@id_pedido", objeto.IdPedido);
+                cmd.Parameters.AddWithValue("@numero_pedido", objeto.NumeroPedido);
                 cmd.Parameters.AddWithValue("@monto", objeto.Monto);
                 cmd.Parameters.AddWithValue("@metodo_pago", objeto.MetodoPago);
                 cmd.Parameters.AddWithValue("@estado_pago", objeto.EstadoPago);

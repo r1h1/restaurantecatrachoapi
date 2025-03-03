@@ -7,6 +7,7 @@ namespace restaurante_catracho_apirest.Models
     {
         public int IdPedido { get; set; }
         public int IdUsuario { get; set; }
+        public string NumeroPedido { get; set; }
         public string Estado { get; set; }
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
         public DateTime? FechaEntregaEstimada { get; set; }

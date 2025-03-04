@@ -43,7 +43,7 @@ namespace restaurante_catracho_apirest.Controllers
             return Ok(pedido);
         }
 
-        // POST: api/Pedidos - Crear un pedido
+        // POST: api/Pedidos - Crear un pedido y devolver el ID insertado
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Crear([FromBody] Pedidos pedido)
@@ -55,9 +55,9 @@ namespace restaurante_catracho_apirest.Controllers
 
             try
             {
-                bool respuesta = await _data.Crear(pedido);
-                return respuesta
-                    ? StatusCode(StatusCodes.Status201Created, new { isSuccess = true, message = "Pedido creado exitosamente" })
+                int nuevoId = await _data.Crear(pedido);
+                return nuevoId > 0
+                    ? StatusCode(StatusCodes.Status201Created, new { isSuccess = true, message = "Pedido creado exitosamente", id_pedido = nuevoId })
                     : StatusCode(StatusCodes.Status500InternalServerError, new { isSuccess = false, message = "Error al crear el pedido" });
             }
             catch (Exception ex)

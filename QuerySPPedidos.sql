@@ -1,17 +1,24 @@
 -- Procedimientos CRUD para la tabla Pedidos con el nuevo campo numero_pedido
 
--- Crear un pedido
+-- Crear un pedido y devolver el ID insertado
 CREATE PROCEDURE sp_InsertPedido
     @id_usuario INT,
     @numero_pedido VARCHAR(255),
     @estado NVARCHAR(50),
     @fecha_entrega_estimada DATETIME = NULL,
-    @monto_total DECIMAL(10,2)
+    @monto_total DECIMAL(10,2),
+    @id_pedido INT OUTPUT
 AS
 BEGIN
+    SET NOCOUNT ON;
+
     INSERT INTO Pedidos (id_usuario, numero_pedido, estado, fecha_creacion, fecha_entrega_estimada, monto_total)
     VALUES (@id_usuario, @numero_pedido, @estado, GETDATE(), @fecha_entrega_estimada, @monto_total);
+
+    -- Obtener el ID insertado y asignarlo al parámetro de salida
+    SET @id_pedido = SCOPE_IDENTITY();
 END;
+
 
 -- Leer todos los pedidos
 CREATE PROCEDURE sp_GetPedidos

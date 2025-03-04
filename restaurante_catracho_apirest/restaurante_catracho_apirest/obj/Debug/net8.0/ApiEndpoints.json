@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "restaurante_catracho_apirest.Controllers.SeguridadController",
+    "Method": "Comparar",
+    "RelativePath": "api/Auth",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "restaurante_catracho_apirest.Models.Seguridad",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "restaurante_catracho_apirest.Controllers.DetallesPedidoController",
     "Method": "Lista",
     "RelativePath": "api/DetallesPedido",
@@ -351,8 +367,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "usuario",
-        "Type": "restaurante_catracho_apirest.Models.Usuarios",
+        "Name": "usuarioEditar",
+        "Type": "restaurante_catracho_apirest.Models.UsuariosEditar",
         "IsRequired": true
       }
     ],
@@ -401,22 +417,6 @@
       {
         "Name": "request",
         "Type": "restaurante_catracho_apirest.Models.ActualizarClaveRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "restaurante_catracho_apirest.Controllers.SeguridadController",
-    "Method": "Comparar",
-    "RelativePath": "v1/Security",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "restaurante_catracho_apirest.Models.Seguridad",
         "IsRequired": true
       }
     ],

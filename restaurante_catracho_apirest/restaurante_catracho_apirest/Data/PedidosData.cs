@@ -74,33 +74,41 @@ namespace restaurante_catracho_apirest.Data
             return objeto;
         }
 
-        public async Task<bool> Crear(Pedidos objeto)
+        public async Task<int> Crear(Pedidos objeto)
         {
-            bool respuesta = true;
+            int nuevoId = 0; // Capturar el ID insertado
 
             using (var con = new SqlConnection(conexion))
             {
                 SqlCommand cmd = new SqlCommand("sp_InsertPedido", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
                 cmd.Parameters.AddWithValue("@id_usuario", objeto.IdUsuario);
                 cmd.Parameters.AddWithValue("@numero_pedido", objeto.NumeroPedido);
                 cmd.Parameters.AddWithValue("@estado", objeto.Estado);
                 cmd.Parameters.AddWithValue("@fecha_entrega_estimada", (object?)objeto.FechaEntregaEstimada ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@monto_total", objeto.MontoTotal);
-                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Parámetro de salida para obtener el ID insertado
+                SqlParameter outputIdParam = new SqlParameter("@id_pedido", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outputIdParam);
 
                 try
                 {
                     await con.OpenAsync();
-                    int filasAfectadas = await cmd.ExecuteNonQueryAsync();
-                    respuesta = filasAfectadas > 0;
+                    await cmd.ExecuteNonQueryAsync();
+                    nuevoId = Convert.ToInt32(outputIdParam.Value); // Obtener el ID generado
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error en Crear: {ex.Message}");
-                    respuesta = false;
                 }
             }
-            return respuesta;
+
+            return nuevoId;
         }
 
         public async Task<bool> Editar(Pedidos objeto)

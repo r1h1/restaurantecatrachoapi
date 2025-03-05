@@ -23,12 +23,19 @@ END;
 
 -- Leer un detalle de pedido por ID
 CREATE PROCEDURE sp_GetDetallePedidoById
-    @id_detalle INT
+    @id_pedido INT
 AS
 BEGIN
-    SELECT id_detalle, id_pedido, id_producto, numero_pedido, cantidad, precio_unitario 
-    FROM Detalles_Pedidos 
-    WHERE id_detalle = @id_detalle;
+    SELECT dp.id_detalle, 
+           dp.id_pedido, 
+           dp.id_producto, 
+           p.nombre AS nombre_producto,  -- Nuevo campo agregado
+           dp.numero_pedido, 
+           dp.cantidad, 
+           dp.precio_unitario
+    FROM Detalles_Pedidos dp
+    INNER JOIN Productos p ON dp.id_producto = p.id_producto
+    WHERE dp.id_pedido = @id_pedido;
 END;
 
 -- Leer detalles de pedido por número de pedido (nuevo SP)

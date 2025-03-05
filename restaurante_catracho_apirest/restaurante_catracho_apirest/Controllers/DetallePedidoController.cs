@@ -30,17 +30,19 @@ namespace restaurante_catracho_apirest.Controllers
             return Ok(lista);
         }
 
-        // GET: api/DetallesPedido/{id_detalle} - Obtener un detalle de pedido por ID
-        [HttpGet("{id_detalle}")]
+        // GET: api/DetallesPedido/{id_pedido} - Obtener todos los detalles de un pedido
+        [HttpGet("{id_pedido}")]
         [Authorize]
-        public async Task<IActionResult> Obtener(int id_detalle)
+        public async Task<IActionResult> Obtener(int id_pedido)
         {
-            var detalle = await _data.ObtenerId(id_detalle);
-            if (detalle == null)
+            var detalles = await _data.ObtenerId(id_pedido);
+
+            if (detalles == null || detalles.Count == 0)
             {
-                return NotFound(new { isSuccess = false, message = "Detalle de pedido no encontrado" });
+                return NotFound(new { isSuccess = false, message = "No se encontraron detalles para este pedido" });
             }
-            return Ok(detalle);
+
+            return Ok(detalles);
         }
 
         // POST: api/DetallesPedido - Crear un detalle de pedido

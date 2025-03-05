@@ -35,7 +35,9 @@ namespace restaurante_catracho_apirest.Data
                             Estado = reader["estado"].ToString()!,
                             FechaCreacion = Convert.ToDateTime(reader["fecha_creacion"]),
                             FechaEntregaEstimada = reader["fecha_entrega_estimada"] as DateTime?,
-                            MontoTotal = Convert.ToDecimal(reader["monto_total"])
+                            MontoTotal = Convert.ToDecimal(reader["monto_total"]),
+                            Direccion = reader["direccion"].ToString()!,
+                            Indicaciones = reader["indicaciones"].ToString()!
                         });
                     }
                 }
@@ -66,7 +68,9 @@ namespace restaurante_catracho_apirest.Data
                             Estado = reader["estado"].ToString()!,
                             FechaCreacion = Convert.ToDateTime(reader["fecha_creacion"]),
                             FechaEntregaEstimada = reader["fecha_entrega_estimada"] as DateTime?,
-                            MontoTotal = Convert.ToDecimal(reader["monto_total"])
+                            MontoTotal = Convert.ToDecimal(reader["monto_total"]),
+                            Direccion = reader["direccion"].ToString()!,
+                            Indicaciones = reader["indicaciones"].ToString()!
                         };
                     }
                 }
@@ -88,6 +92,8 @@ namespace restaurante_catracho_apirest.Data
                 cmd.Parameters.AddWithValue("@estado", objeto.Estado);
                 cmd.Parameters.AddWithValue("@fecha_entrega_estimada", (object?)objeto.FechaEntregaEstimada ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@monto_total", objeto.MontoTotal);
+                cmd.Parameters.AddWithValue("@direccion", objeto.Direccion);
+                cmd.Parameters.AddWithValue("@indicaciones", objeto.Indicaciones);
 
                 // Parámetro de salida para obtener el ID insertado
                 SqlParameter outputIdParam = new SqlParameter("@id_pedido", SqlDbType.Int)
@@ -124,6 +130,8 @@ namespace restaurante_catracho_apirest.Data
                 cmd.Parameters.AddWithValue("@estado", objeto.Estado);
                 cmd.Parameters.AddWithValue("@fecha_entrega_estimada", (object?)objeto.FechaEntregaEstimada ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@monto_total", objeto.MontoTotal);
+                cmd.Parameters.AddWithValue("@direccion", objeto.Direccion);
+                cmd.Parameters.AddWithValue("@indicaciones", objeto.Indicaciones);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 try

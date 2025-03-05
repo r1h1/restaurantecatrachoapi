@@ -26,5 +26,10 @@ namespace restaurante_catracho_apirest.Models
 
         [Required]
         public decimal MontoTotal { get; set; }
+
+        [Required]
+        public string Direccion { get; set; }
+
+        public string Indicaciones { get; set; }
     }
 }

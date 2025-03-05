@@ -42,34 +42,35 @@ namespace restaurante_catracho_apirest.Data
             return lista;
         }
 
-        public async Task<DetallePedidos> ObtenerId(int id_detalle)
+        public async Task<List<DetallePedidos>> ObtenerId(int id_pedido)
         {
-            DetallePedidos objeto = new DetallePedidos();
+            List<DetallePedidos> lista = new List<DetallePedidos>();
 
             using (var con = new SqlConnection(conexion))
             {
                 await con.OpenAsync();
                 SqlCommand cmd = new SqlCommand("sp_GetDetallePedidoById", con);
-                cmd.Parameters.AddWithValue("@id_detalle", id_detalle);
+                cmd.Parameters.AddWithValue("@id_pedido", id_pedido);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
                     while (await reader.ReadAsync())
                     {
-                        objeto = new DetallePedidos
+                        lista.Add(new DetallePedidos
                         {
                             IdDetalle = Convert.ToInt32(reader["id_detalle"]),
                             IdPedido = Convert.ToInt32(reader["id_pedido"]),
                             IdProducto = Convert.ToInt32(reader["id_producto"]),
+                            NombreProducto = reader["nombre_producto"].ToString()!, // Se obtiene el nombre del producto
                             NumeroPedido = reader["numero_pedido"].ToString()!,
                             Cantidad = Convert.ToInt32(reader["cantidad"]),
                             PrecioUnitario = Convert.ToDecimal(reader["precio_unitario"])
-                        };
+                        });
                     }
                 }
             }
-            return objeto;
+            return lista;
         }
 
         public async Task<bool> Crear(DetallePedidos objeto)

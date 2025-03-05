@@ -26,7 +26,8 @@ CREATE PROCEDURE sp_GetPedidos
 AS
 BEGIN
     SELECT id_pedido, id_usuario, numero_pedido, estado, fecha_creacion, fecha_entrega_estimada, monto_total, direccion, indicaciones 
-    FROM Pedidos;
+    FROM Pedidos
+	ORDER BY id_pedido ASC;
 END;
 
 -- Leer un pedido por ID

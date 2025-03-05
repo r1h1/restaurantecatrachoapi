@@ -43,6 +43,19 @@ namespace restaurante_catracho_apirest.Controllers
             return Ok(pedido);
         }
 
+        // GET: api/Pedidos/NumeroPedido/{numero_pedido} - Obtener un pedido por numero
+        [HttpGet("NumeroPedido/{numero_pedido}")]
+        [Authorize]
+        public async Task<IActionResult> ObtenerNumeroPedido(int numero_pedido)
+        {
+            var pedido = await _data.ObtenerNumeroPedido(numero_pedido);
+            if (pedido == null)
+            {
+                return NotFound(new { isSuccess = false, message = "Pedido no encontrado" });
+            }
+            return Ok(pedido);
+        }
+
         // POST: api/Pedidos - Crear un pedido y devolver el ID insertado
         [HttpPost]
         [Authorize]

@@ -75,14 +75,14 @@
         }
       }
     },
-    "/api/DetallesPedido/{id_detalle}": {
+    "/api/DetallesPedido/{id_pedido}": {
       "get": {
         "tags": [
           "DetallesPedido"
         ],
         "parameters": [
           {
-            "name": "id_detalle",
+            "name": "id_pedido",
             "in": "path",
             "required": true,
             "schema": {
@@ -96,7 +96,9 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/api/DetallesPedido/{id_detalle}": {
       "delete": {
         "tags": [
           "DetallesPedido"
@@ -332,6 +334,29 @@
         "parameters": [
           {
             "name": "id_pedido",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Pedidos/NumeroPedido/{numero_pedido}": {
+      "get": {
+        "tags": [
+          "Pedidos"
+        ],
+        "parameters": [
+          {
+            "name": "numero_pedido",
             "in": "path",
             "required": true,
             "schema": {
@@ -711,6 +736,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "nombreProducto": {
+            "type": "string",
+            "nullable": true
+          },
           "cantidad": {
             "type": "integer",
             "format": "int32"
@@ -758,6 +787,7 @@
       },
       "Pedidos": {
         "required": [
+          "direccion",
           "estado",
           "idUsuario",
           "montoTotal",
@@ -795,6 +825,14 @@
           "montoTotal": {
             "type": "number",
             "format": "double"
+          },
+          "direccion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "indicaciones": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

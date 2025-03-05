@@ -52,7 +52,6 @@ builder.Services.AddSingleton<UsuarioData>();
 builder.Services.AddSingleton<PedidosData>();
 builder.Services.AddSingleton<ProductoData>();
 builder.Services.AddSingleton<DetallePedidosData>();
-builder.Services.AddSingleton<PagosData>();
 builder.Services.AddSingleton<SeguridadData>();
 
 // Configurar CORS (Cross-Origin Resource Sharing)

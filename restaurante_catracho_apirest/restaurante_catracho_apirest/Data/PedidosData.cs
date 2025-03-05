@@ -78,6 +78,39 @@ namespace restaurante_catracho_apirest.Data
             return objeto;
         }
 
+        public async Task<Pedidos> ObtenerNumeroPedido(int numero_pedido)
+        {
+            Pedidos objeto = new Pedidos();
+
+            using (var con = new SqlConnection(conexion))
+            {
+                await con.OpenAsync();
+                SqlCommand cmd = new SqlCommand("sp_GetPedidoByNumeroPedido", con);
+                cmd.Parameters.AddWithValue("@numero_pedido", numero_pedido);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        objeto = new Pedidos
+                        {
+                            IdPedido = Convert.ToInt32(reader["id_pedido"]),
+                            IdUsuario = Convert.ToInt32(reader["id_usuario"]),
+                            NumeroPedido = reader["numero_pedido"].ToString()!,
+                            Estado = reader["estado"].ToString()!,
+                            FechaCreacion = Convert.ToDateTime(reader["fecha_creacion"]),
+                            FechaEntregaEstimada = reader["fecha_entrega_estimada"] as DateTime?,
+                            MontoTotal = Convert.ToDecimal(reader["monto_total"]),
+                            Direccion = reader["direccion"].ToString()!,
+                            Indicaciones = reader["indicaciones"].ToString()!
+                        };
+                    }
+                }
+            }
+            return objeto;
+        }
+
         public async Task<int> Crear(Pedidos objeto)
         {
             int nuevoId = 0; // Capturar el ID insertado

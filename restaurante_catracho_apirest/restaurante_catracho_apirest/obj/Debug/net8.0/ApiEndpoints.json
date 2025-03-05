@@ -59,9 +59,9 @@
   },
   {
     "ContainingType": "restaurante_catracho_apirest.Controllers.DetallesPedidoController",
-    "Method": "Obtener",
+    "Method": "Eliminar",
     "RelativePath": "api/DetallesPedido/{id_detalle}",
-    "HttpMethod": "GET",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -75,14 +75,14 @@
   },
   {
     "ContainingType": "restaurante_catracho_apirest.Controllers.DetallesPedidoController",
-    "Method": "Eliminar",
-    "RelativePath": "api/DetallesPedido/{id_detalle}",
-    "HttpMethod": "DELETE",
+    "Method": "Obtener",
+    "RelativePath": "api/DetallesPedido/{id_pedido}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id_detalle",
+        "Name": "id_pedido",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -231,6 +231,22 @@
     "Parameters": [
       {
         "Name": "id_pedido",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "restaurante_catracho_apirest.Controllers.PedidosController",
+    "Method": "ObtenerNumeroPedido",
+    "RelativePath": "api/Pedidos/NumeroPedido/{numero_pedido}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numero_pedido",
         "Type": "System.Int32",
         "IsRequired": true
       }

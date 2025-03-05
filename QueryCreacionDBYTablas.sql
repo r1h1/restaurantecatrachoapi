@@ -3,6 +3,11 @@ CREATE DATABASE restaurante_catracho_db;
 USE restaurante_catracho_db;
 GO
 
+-- Creacion de base de datos restaurante_catracho_db
+CREATE DATABASE restaurante_catracho_db;
+USE restaurante_catracho_db;
+GO
+
 -- Creacion de tablas
 CREATE TABLE Usuarios (
     id_usuario INT IDENTITY(1,1) PRIMARY KEY,
@@ -31,6 +36,8 @@ CREATE TABLE Pedidos (
     fecha_creacion DATETIME DEFAULT GETDATE(),
     fecha_entrega_estimada DATETIME,
     monto_total DECIMAL(10,2) NOT NULL,
+    direccion VARCHAR(255) NOT NULL,
+    indicaciones VARCHAR(255),
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE CASCADE
 );
 
@@ -45,14 +52,26 @@ CREATE TABLE Detalles_Pedidos (
     FOREIGN KEY (id_producto) REFERENCES Productos(id_producto) ON DELETE CASCADE
 );
 
-CREATE TABLE Pagos (
-    id_pago INT IDENTITY(1,1) PRIMARY KEY,
-    id_pedido INT NOT NULL,
-    numero_pedido VARCHAR(255),
-    monto DECIMAL(10,2) NOT NULL,
-    metodo_pago NVARCHAR(50) CHECK (metodo_pago IN ('1', '2', '3')) NOT NULL,
-    fecha_pago DATETIME DEFAULT GETDATE(),
-    estado_pago NVARCHAR(50) CHECK (estado_pago IN ('1', '2', '3')) NOT NULL,
-    FOREIGN KEY (id_pedido) REFERENCES Pedidos(id_pedido) ON DELETE CASCADE
-);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

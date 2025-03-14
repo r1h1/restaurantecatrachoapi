@@ -47,7 +47,6 @@ namespace restaurante_catracho_apirest.Controllers
 
         // POST: api/Usuarios - Crear un usuario
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> Crear([FromBody] Usuarios usuario)
         {
             if (usuario == null)

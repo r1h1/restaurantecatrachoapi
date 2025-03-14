@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\data\\pedidosdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\data\\pedidosdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\models\\pedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\models\\pedidos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|c:\\users\\pc\\desktop\\danielbackup\\yisusproyecto\\jesusproyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{78035A81-0065-4C20-B3C8-4D5515C9BC79}|restaurante_catracho_apirest\\restaurante_catracho_apirest.csproj|solutionrelative:restaurante_catracho_apirest\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,52 +19,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Program.cs",
-              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Program.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Program.cs",
-              "RelativeToolTip": "restaurante_catracho_apirest\\Program.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAIAwwDUAAAA0AAAAAAAAAA==",
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "restaurante_catracho_apirest\\Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowDAAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T19:02:13.904Z",
+              "WhenOpened": "2025-03-14T02:57:20.441Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Pedidos.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Models\\Pedidos.cs",
-              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Models\\Pedidos.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Models\\Pedidos.cs",
-              "RelativeToolTip": "restaurante_catracho_apirest\\Models\\Pedidos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T18:28:29.398Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PedidosData.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Data\\PedidosData.cs",
-              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Data\\PedidosData.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Data\\PedidosData.cs",
-              "RelativeToolTip": "restaurante_catracho_apirest\\Data\\PedidosData.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAYwFkAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T18:28:28.128Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PedidosController.cs",
-              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Controllers\\PedidosController.cs",
-              "RelativeDocumentMoniker": "restaurante_catracho_apirest\\Controllers\\PedidosController.cs",
-              "ToolTip": "C:\\Users\\PC\\Desktop\\DanielBackup\\YisusProyecto\\JesusProyecto\\restaurante_catracho_apirest\\restaurante_catracho_apirest\\Controllers\\PedidosController.cs",
-              "RelativeToolTip": "restaurante_catracho_apirest\\Controllers\\PedidosController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowC0AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T18:28:26.057Z"
             }
           ]
         }

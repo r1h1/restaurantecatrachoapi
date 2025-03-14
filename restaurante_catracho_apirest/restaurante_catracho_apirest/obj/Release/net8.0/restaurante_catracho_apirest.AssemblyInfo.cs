@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("restaurante_catracho_apirest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+041029e8a8e91f1a1deb3bad8fe9cb11bb516cc8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+213827ef939983775794fb4f88da8b74b80bf1d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("restaurante_catracho_apirest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("restaurante_catracho_apirest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
